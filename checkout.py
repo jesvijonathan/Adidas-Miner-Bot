@@ -60,7 +60,8 @@ def checkout_pay(driver=None):
     time.sleep(1)
     
     # Remove the below comment to proceed placing an order | Disabled for safety purpose
-    #wait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, "//span[text()='Place Order']"))).click()
+    if pay_4_real == True:
+        wait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, "//span[text()='Place Order']"))).click()
     print("-Placing Order")
 
     print("\nDone")

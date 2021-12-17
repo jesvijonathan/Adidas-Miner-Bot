@@ -4,6 +4,9 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait as wait
 
+import threading
+from multiprocessing import Process
+
 from config import *
 
 import time
@@ -12,6 +15,7 @@ import login
 import checkout
 import bagout
 import scrap
+import release_catch
 
 def load_menu():
     menu_list = "\nAdidas Miner Bot v0.2\n" +\
@@ -46,12 +50,14 @@ def load_menu():
             exit(0)
 
 def automation_1():
+    threading.Thread(target=release_catch.site_login(), args=(), daemon=True).start()
+    
     print("\nScript Execution 1.0")
 
 def __main__():
-    if menu == 1:
+    if menu == 0:
         load_menu()
-    elif menu == 0:
+    elif menu == 1:
         automation_1()
 
 
